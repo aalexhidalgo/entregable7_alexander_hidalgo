@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem ExplosionParticleSystem;
     public ParticleSystem FireworksParticleSystem;
 
+    public bool gameOver;
+
     void Start()
     {
         //Posición inicial
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             //Aplicamos el eje en el cual va a saltar, la fuerza con la que va a saltar y por último aplicamos la fuerza de forma inmediata (tiene en cuenta la masa)
             PlayerRigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
-            CameraAudioSource.PlayOneShot(BoingClip, 1);
+            PlayerAudioSource.PlayOneShot(BoingClip, 1);
         }
 
         //Límite superior
@@ -70,14 +72,13 @@ public class PlayerController : MonoBehaviour
         if (gameObject.CompareTag("Player") && otherCollider.gameObject.CompareTag("Bomb"))
         {
             Debug.Log($"GAME OVER");
-            Time.timeScale = 0;
 
             //Clip de explosión
-            CameraAudioSource.PlayOneShot(BoomClip, 1);
+            PlayerAudioSource.PlayOneShot(BoomClip, 1);
 
             //FX de Explosión
             Instantiate(ExplosionParticleSystem, transform.position, ExplosionParticleSystem.transform.rotation);
-            ExplosionParticleSystem.Play();
+            //ExplosionParticleSystem.Play();
         }
     }
 
@@ -89,7 +90,8 @@ public class PlayerController : MonoBehaviour
             MoneyCounter ++;
             Destroy(otherCollider.gameObject);
             Debug.Log($"¡Tienes un total de {MoneyCounter} monedas, sigue así!");
-            CameraAudioSource.PlayOneShot(BlipClip, 1);
+            PlayerAudioSource.PlayOneShot(BlipClip, 1);
+            Instantiate(FireworksParticleSystem, transform.position, FireworksParticleSystem.transform.rotation);
             FireworksParticleSystem.Play();
         }
     }
