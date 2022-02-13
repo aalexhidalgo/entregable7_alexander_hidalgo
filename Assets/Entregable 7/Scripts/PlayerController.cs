@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public AudioClip BlipClip;
     public AudioClip BoingClip;
     public AudioClip BoomClip;
-    public AudioClip BackgroundMusic;
 
     private AudioSource PlayerAudioSource;
     private AudioSource CameraAudioSource;
@@ -30,15 +29,17 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //Empieza el juego 
+        //gameOver = false;
         //Posición inicial
         transform.position = InitialPos;
 
-        //Accedemos a la componente Rigidbody del Player que podrá ser modificada 
+        //Accedemos a la componente Rigidbody y AudioSource del Player
         PlayerRigidbody = GetComponent<Rigidbody>();
+        PlayerAudioSource = GetComponent<AudioSource>();
 
         //Accedemos al AudioSource de la Main Camera que recoge la música de fondo del juego
         CameraAudioSource = GameObject.Find("Main Camera").GetComponent<AudioSource>();
-        CameraAudioSource.PlayOneShot(BackgroundMusic , 1);
     }
 
     void Update()
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
             //FX de Explosión
             Instantiate(ExplosionParticleSystem, transform.position, ExplosionParticleSystem.transform.rotation);
-            //ExplosionParticleSystem.Play();
+            ExplosionParticleSystem.Play();
         }
     }
 
@@ -91,6 +92,8 @@ public class PlayerController : MonoBehaviour
             Destroy(otherCollider.gameObject);
             Debug.Log($"¡Tienes un total de {MoneyCounter} monedas, sigue así!");
             PlayerAudioSource.PlayOneShot(BlipClip, 1);
+
+            //FX de Fuegos artificiales
             Instantiate(FireworksParticleSystem, transform.position, FireworksParticleSystem.transform.rotation);
             FireworksParticleSystem.Play();
         }

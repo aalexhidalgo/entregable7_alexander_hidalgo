@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MoveRight : MonoBehaviour
 {
+    public Vector3 Direction = Vector3.right;
     public float Speed = 5f;
 
-    private float XLimit = 10f;
+    private float XLimit = 12f;
 
     private PlayerController PlayerControllerScript;
 
@@ -18,11 +19,12 @@ public class MoveRight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PlayerControllerScript.gameOver)
-        {
-            transform.Translate(Vector3.right * Speed * Time.deltaTime);
-        }
+        //if(!PlayerControllerScript.gameOver)
+        //{
+            transform.Translate(Direction * Speed * Time.deltaTime);
+        //}
 
+        //Limites
         if (transform.position.y > XLimit)
         {
             Destroy(gameObject);
