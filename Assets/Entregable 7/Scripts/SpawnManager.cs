@@ -16,10 +16,11 @@ public class SpawnManager : MonoBehaviour
     private float YGroundLimit = 0.75f;
     private float ZLimit = 0f;
 
+    private Quaternion Rotation = Quaternion.Euler (0, 180, 0);
+
     void Start()
     {
         PlayerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-
         InvokeRepeating("SpawnRandomObject", StartDelay, RepeatRate);
     }
 
@@ -30,20 +31,19 @@ public class SpawnManager : MonoBehaviour
 
     public Vector3 RandomSpawnPos()
     {
-        float RandomSpawnPosX = Random.Range (0, 2);
+        int RandomSpawnPosX = Random.Range (0, 2);
         float RandomSpawnPosY = Random.Range (YSuperiorLimit, YGroundLimit);
 
-        /*if (RandomSpawnPosX == 0)
+        if (RandomSpawnPosX == 0)
         {
             return new Vector3 (-XLimit, RandomSpawnPosY, ZLimit);
         }
 
-        if (RandomSpawnPosX == 1)
+        else
         {
             return new Vector3 (XLimit, RandomSpawnPosY, ZLimit);
-            //MoveRightScript.Direction *= -1 o girar con un quaternion;
         }
-        */
+        
     }
 
     public void SpawnRandomObject()

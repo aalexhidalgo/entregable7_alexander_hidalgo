@@ -25,7 +25,7 @@ public class MoveRight : MonoBehaviour
         //}
 
         //Limites
-        if (transform.position.y > XLimit)
+        if (transform.position.x > XLimit)
         {
             Destroy(gameObject);
         }
@@ -34,5 +34,5 @@ public class MoveRight : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    } 
 }
