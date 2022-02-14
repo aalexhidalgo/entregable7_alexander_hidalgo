@@ -19,10 +19,10 @@ public class MoveRight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(!PlayerControllerScript.gameOver)
-        //{
+        if(!PlayerControllerScript.gameOver)
+        {
             transform.Translate(Direction * Speed * Time.deltaTime);
-        //}
+        }
 
         //Limites
         if (transform.position.x > XLimit)

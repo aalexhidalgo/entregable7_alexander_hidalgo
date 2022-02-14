@@ -16,8 +16,6 @@ public class SpawnManager : MonoBehaviour
     private float YGroundLimit = 0.75f;
     private float ZLimit = 0f;
 
-    private Quaternion Rotation = Quaternion.Euler (0, 180, 0);
-
     void Start()
     {
         PlayerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -29,9 +27,9 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    public Vector3 RandomSpawnPos()
+    public Vector3 RandomSpawnPos(int RandomSpawnPosX)
     {
-        int RandomSpawnPosX = Random.Range (0, 2);
+        
         float RandomSpawnPosY = Random.Range (YSuperiorLimit, YGroundLimit);
 
         if (RandomSpawnPosX == 0)
@@ -50,8 +48,17 @@ public class SpawnManager : MonoBehaviour
     {
         if (!PlayerControllerScript.gameOver)
         {
-            int RandomIndex = Random.Range(0, targetPrefabs.Length);
-            Instantiate(targetPrefabs[RandomIndex], RandomSpawnPos(), targetPrefabs[RandomIndex].transform.rotation);
+            int RandomIndex = Random.Range(0, targetPrefabs.Length); 
+
+            //Variable que guarda de forma Random su spawn en el límite derecho o izquierdo
+            int RandomSpawnPosX = Random.Range(0, 2);
+            GameObject Prefab = Instantiate(targetPrefabs[RandomIndex], RandomSpawnPos(RandomSpawnPosX), targetPrefabs[RandomIndex].transform.rotation);
+            
+            //Si los obstáculos aparecen en el lado derecho de la pantalla accedemos a la component MoveRight de estos para invertir su dirección
+            if (RandomSpawnPosX == 1)
+            {
+                Prefab.GetComponent<MoveRight>().Direction *= -1;
+            }
         }
     }
 }
