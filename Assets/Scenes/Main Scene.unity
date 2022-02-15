@@ -744,6 +744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1833372400815448128, guid: 0ae5bab20a4814ac0840dcc8c32cd9b2, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8230191846665520075, guid: 0ae5bab20a4814ac0840dcc8c32cd9b2, type: 3}
       propertyPath: BlipClip
       value: 
@@ -756,6 +760,10 @@ PrefabInstance:
       propertyPath: BoingClip
       value: 
       objectReference: {fileID: 8300000, guid: ccb9b31174a3a43709a113a9c7cf4252, type: 3}
+    - target: {fileID: 8230191846665520075, guid: 0ae5bab20a4814ac0840dcc8c32cd9b2, type: 3}
+      propertyPath: DownForce
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8230191846665520075, guid: 0ae5bab20a4814ac0840dcc8c32cd9b2, type: 3}
       propertyPath: BackgroundMusic
       value: 
@@ -813,11 +821,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef384b52e4abdeb4fa2bbf1890a8fc24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPrefabs:
+  TargetPrefabs:
   - {fileID: 11368019182273911, guid: 1db47c5ef25154fb1806822c25335042, type: 3}
   - {fileID: 8579601760348528630, guid: 0752829c2e3ba4cb78049ff40067a24f, type: 3}
   StartDelay: 0.1
-  RepeatRate: 0.5
+  RepeatRate: 1
 --- !u!1 &2066278991
 GameObject:
   m_ObjectHideFlags: 0

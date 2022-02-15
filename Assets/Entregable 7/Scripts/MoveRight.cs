@@ -13,12 +13,13 @@ public class MoveRight : MonoBehaviour
 
     void Start()
     {
-         
+        PlayerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Los obstáculos se mueven constantemente hacia la derecha (Siempre que esté vivo el Player)
         if(!PlayerControllerScript.gameOver)
         {
             transform.Translate(Direction * Speed * Time.deltaTime);
