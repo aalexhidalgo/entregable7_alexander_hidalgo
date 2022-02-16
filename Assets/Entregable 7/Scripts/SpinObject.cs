@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpinObject : MonoBehaviour
 {
-    public float spinSpeed;
+    private float spinSpeed;
 
     private PlayerController PlayerControllerScript;
 
@@ -14,6 +14,7 @@ public class SpinObject : MonoBehaviour
     }
     void Update()
     {
+        //Girará constantemente en el eje Y siempre que esté vivo el Player
         if (!PlayerControllerScript.gameOver)
         {
             transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);

@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("GAME OVER");
             gameOver = true;
+            //Extra: Si pierdes también se desactiva la música de fondo
             CameraAudioSource.Pause();
         }
 
@@ -95,7 +96,11 @@ public class PlayerController : MonoBehaviour
             ExplosionParticleSystem.Play();
 
             gameOver = true;
+            //Extra: Si pierdes también se desactiva la música de fondo
             CameraAudioSource.Pause();
+
+            //Extra: Si choca contra la bomba, freezeamos su posición para evitar un doble mensaje de "GAME OVER" al chocar luego contra el suelo
+            PlayerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
@@ -118,7 +123,7 @@ public class PlayerController : MonoBehaviour
             //Extra: Si el jugador consigue 10 monedas los obstáculos comienzan a aparecer de forma más rápida
             if (MoneyCounter == 10)
             {
-                SpawnManagerScript.RepeatRate *= 0.2f;
+                SpawnManagerScript.RepeatRate *= 0.1f;
             }
         }
     }

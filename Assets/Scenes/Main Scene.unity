@@ -748,6 +748,10 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1833372400815448128, guid: 0ae5bab20a4814ac0840dcc8c32cd9b2, type: 3}
+      propertyPath: m_Constraints
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8230191846665520075, guid: 0ae5bab20a4814ac0840dcc8c32cd9b2, type: 3}
       propertyPath: BlipClip
       value: 

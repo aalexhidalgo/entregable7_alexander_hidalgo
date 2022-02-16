@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     //Límites
     private float XLimit = 10f;
     private float YSuperiorLimit = 14f;
-    private float YGroundLimit = 0.75f;
+    private float YGroundLimit = 1f;
     private float ZLimit = 0f;
 
     void Start()
